@@ -201,3 +201,14 @@ For example:
      val input  = slave(HandShake(8))
      val output = master(HandShake(8))
    }
+
+Conditional ports
+~~~~~~~~~~~~~~~~~
+
+You can define ports conditionally, for example:
+
+.. code-block:: scala
+
+  val io = new Bundle {
+    val data = (dataWidth > 0) generate (out UInt(dataWidth bits))
+  }
