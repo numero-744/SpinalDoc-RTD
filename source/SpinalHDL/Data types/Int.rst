@@ -9,7 +9,7 @@ UInt/SInt
 Description
 ^^^^^^^^^^^
 
-The ``UInt``/``SInt`` type corresponds to a vector of bits that can be used for signed/unsigned integer arithmetic.
+The ``UInt``/``SInt`` type corresponds to a vector of bits that can be used for unsigned/signed integer arithmetic.
 
 Declaration
 ^^^^^^^^^^^
@@ -308,7 +308,7 @@ Bit extraction
      - Description
      - Return
    * - x(y)
-     - Readbit, y : Int/UInt
+     - Read bit, y : Int/UInt
      - Bool
    * - x(offset, width)
      - Read bitfield, offset: UInt, width: Int
