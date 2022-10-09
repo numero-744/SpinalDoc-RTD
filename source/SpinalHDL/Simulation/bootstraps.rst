@@ -87,25 +87,41 @@ On this ``SimCompiled`` instance you can run your simulation with the following 
 
 ``doSimUntilVoid[(simName[, seed])]{dut => ...}``
   Run the simulation until it is ended by calling either ``simSuccess()`` or ``simFailure()``.
-  The main stimulus thread can continue or exit early, as long as there are events to process,
-  the simulation will continue. The simulation will report an error if it gets fully stuck.
-
-When in doubt about what to use, prefer ``doSim(...)``, for example :
+  The simulation can continue even if the main stimulus thread has run to completion, as
+  long as there are events to process and it is not ended manually. The simulation will
+  report an error if it gets fully stuck.
 
 .. code-block:: scala
 
-   val spinalConfig = SpinalConfig(defaultClockDomainFrequency = FixedFrequency(10 MHz))
+   object SomeSimulation extends App {
+     class TopLevel extends Component {
+       val counter = out(Reg(UInt(8 bits)) init 0)
+       counter := counter + 1
+     }
 
-   SimConfig
-     .withConfig(spinalConfig)
-     .withWave
-     .allOptimisation
-     .workspacePath("~/tmp")
-     .compile(new TopLevel)
-     .doSim { dut =>
+     SimConfig.compile(new TopLevel).doSim { dut =>
        SimTimeout(1000)
-       // Simulation code here
+       dut.clockDomain.forkStimulus(10)
+       dut.clockDomain.waitSamplingWhere(dut.counter.toInt == 20)
+       println("end of main thread")
+     }
+
+     SimConfig.compile(new TopLevel).doSimUntilVoid { dut =>
+       SimTimeout(1000)
+       dut.clockDomain.forkStimulus(10)
+       fork {
+         dut.clockDomain.waitSamplingWhere(dut.counter.toInt == 20)
+         println("end of forked thread")
+         simSuccess()
+       }
+       println("end of main thread")
+     }
    }
+
+In the second example above, notice that it prints "end of main thread" before "end of
+forked thread". If ``doSim`` is used instead of ``doSimUntilVoid``, then "end of forked
+thread" is not printed because the simulation stops just after "end of main thread" is
+printed.
 
 Note that by default, the simulation files will be placed into the ``simWorkspace/xxx`` folders. You can override the simWorkspace location by setting the ``SPINALSIM_WORKSPACE`` environnement variable.
 
