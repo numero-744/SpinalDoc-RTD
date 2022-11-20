@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Why moving from traditional HDL to something else &mdash; SpinalHDL  documentation</title>
+  <title>Foreword &mdash; SpinalHDL  documentation</title>
   
 
   
@@ -45,7 +45,9 @@
 
     
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Introduction" href="../Introduction/index.html" />
+    <link rel="prev" title="Spinal Hardware Description Language" href="../../index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,7 +92,19 @@
               
             
             
-              <ul>
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Foreword</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#why-moving-away-from-traditional-hdl">Why moving away from traditional HDL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vhdl-verilog-aren-t-hardware-description-languages">VHDL/Verilog aren’t Hardware Description Languages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#event-driven-paradigm-doesn-t-make-any-sense-for-rtl">Event driven paradigm doesn’t make any sense for RTL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recent-revisions-of-vhdl-and-verilog-aren-t-usable">Recent revisions of VHDL and Verilog aren’t usable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vhdl-records-verilog-struct-are-broken-systemverilog-is-good-on-this-if-you-can-use-it">VHDL records, Verilog struct are broken (SystemVerilog is good on this, if you can use it)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vhdl-and-verilog-are-so-verbose">VHDL and Verilog are so verbose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meta-hardware-description-capabilities">Meta Hardware Description capabilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../Introduction/index.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Introduction/SpinalHDL.html">About SpinalHDL</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Introduction/SpinalHDL.html#what-is-spinalhdl">What is SpinalHDL?</a></li>
@@ -1145,13 +1159,13 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Why moving from traditional HDL to something else</li>
+      <li>Foreword</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../../_sources/SpinalHDL/miscelenea/regular_hdl.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/SpinalHDL/Foreword/index.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -1164,33 +1178,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="why-moving-from-traditional-hdl-to-something-else">
-<span id="regular-hdl"></span><h1>Why moving from traditional HDL to something else<a class="headerlink" href="#why-moving-from-traditional-hdl-to-something-else" title="Permalink to this heading">¶</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>All the following statements will be about describing hardware. Verification is another tasty topic.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For simplicity, let’s assume that SystemVerilog is a recent revision of Verilog.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>When reading this, we should not underestimate how much our attachment for our favourite HDL will bias our judgement.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>A language feature which isn’t supported by EDA tools shouldn’t be considerate as a language feature, as it is not usable. Look how VHDL 2008 is weakly supported, then look at the calendar.</p>
-</div>
-<div class="section" id="vhdl-verilog-systemverilog-aren-t-hardware-description-languages">
-<h2>VHDL/Verilog/SystemVerilog aren’t Hardware Description Languages<a class="headerlink" href="#vhdl-verilog-systemverilog-aren-t-hardware-description-languages" title="Permalink to this heading">¶</a></h2>
-<p>Those languages are event driven languages created initially for simulation/documentation purposes. Only in a second time they were used as inputs languages for synthesis tools. Which explain the roots of a lot of following points of this page.</p>
+  <div class="section" id="foreword">
+<span id="id1"></span><h1>Foreword<a class="headerlink" href="#foreword" title="Permalink to this heading">¶</a></h1>
+<p>Preliminary notes:</p>
+<ul class="simple">
+<li><p>All the following statements will be about describing digital hardware.
+Verification is another tasty topic.</p></li>
+<li><p>For conciseness, let’s assume that SystemVerilog is a recent revision of
+Verilog.</p></li>
+<li><p>When reading this, we should not underestimate how much our attachment for our
+favourite HDL will bias our judgement.</p></li>
+</ul>
+<div class="section" id="why-moving-away-from-traditional-hdl">
+<h2>Why moving away from traditional HDL<a class="headerlink" href="#why-moving-away-from-traditional-hdl" title="Permalink to this heading">¶</a></h2>
+<div class="section" id="vhdl-verilog-aren-t-hardware-description-languages">
+<h3>VHDL/Verilog aren’t Hardware Description Languages<a class="headerlink" href="#vhdl-verilog-aren-t-hardware-description-languages" title="Permalink to this heading">¶</a></h3>
+<p>Those languages are event driven languages created initially for
+simulation/documentation purposes. Only in a second time they were used as
+inputs languages for synthesis tools. Which explain the roots of a lot of the
+following points.</p>
 </div>
 <div class="section" id="event-driven-paradigm-doesn-t-make-any-sense-for-rtl">
-<h2>Event driven paradigm doesn’t make any sense for RTL<a class="headerlink" href="#event-driven-paradigm-doesn-t-make-any-sense-for-rtl" title="Permalink to this heading">¶</a></h2>
-<p>When you think about it, describing digital hardware (RTL) by using process/always blocks doesn’t make any practical senses. Why do we have to worry about a sensitivity list? Why do we have to split our design between processes/always blocks of different natures (combinatorial logic / register without reset / register with async reset) ?</p>
-<p>Example of VHDL/SpinalHDL equivalences:</p>
-<p>VHDL :</p>
+<h3>Event driven paradigm doesn’t make any sense for RTL<a class="headerlink" href="#event-driven-paradigm-doesn-t-make-any-sense-for-rtl" title="Permalink to this heading">¶</a></h3>
+<p>When you think about it, describing digital hardware (RTL) by using
+process/always blocks doesn’t make any practical senses. Why do we have to worry
+about a sensitivity list? Why do we have to split our design between
+processes/always blocks of different natures (combinatorial logic / register
+without reset / register with async reset)?</p>
+<p>For instance, to implement this:</p>
+<img alt="../../_images/example_design.png" class="align-center" src="../../_images/example_design.png" />
+<p>Using VHDL processes you write this:</p>
 <div class="highlight-vhdl notranslate"><div class="highlight"><pre><span></span><span class="k">signal</span><span class="w"> </span><span class="n">mySignal</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">std_logic</span><span class="p">;</span><span class="w"></span>
 <span class="k">signal</span><span class="w"> </span><span class="n">myRegister</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">unsigned</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
 <span class="k">signal</span><span class="w"> </span><span class="n">myRegisterWithReset</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">unsigned</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
@@ -1224,7 +1241,7 @@
 <span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
-<p>SpinalHDL :</p>
+<p>Using SpinalHDL you write this:</p>
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="n">mySignal</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="nc">Bool</span><span class="p">()</span><span class="w"></span>
 <span class="kd">val</span><span class="w"> </span><span class="n">myRegister</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nc">Reg</span><span class="p">(</span><span class="nc">UInt</span><span class="p">(</span><span class="mi">4</span><span class="w"> </span><span class="n">bits</span><span class="p">))</span><span class="w"></span>
 <span class="kd">val</span><span class="w"> </span><span class="n">myRegisterWithReset</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nc">Reg</span><span class="p">(</span><span class="nc">UInt</span><span class="p">(</span><span class="mi">4</span><span class="w"> </span><span class="n">bits</span><span class="p">))</span><span class="w"> </span><span class="n">init</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
@@ -1237,28 +1254,36 @@
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>As for everything, you can get used to this event driven semantic, until you taste something better.</p>
+<p>As for everything, you can get used to this event driven semantic, until you
+taste something better.</p>
 </div>
-<div class="section" id="recent-revision-of-vhdl-and-verilog-aren-t-usable">
-<h2>Recent revision of VHDL and Verilog aren’t usable<a class="headerlink" href="#recent-revision-of-vhdl-and-verilog-aren-t-usable" title="Permalink to this heading">¶</a></h2>
-<p>The EDA industry is really slow to implement VHDL 2008 and SystemVerilog synthesis capabilities in their tools. Additionally, when it’s done, it appear that only a constraining subset of the language is implemented (not talking about simulation features). It result that using any interesting feature of those language revision isn’t safe as</p>
+<div class="section" id="recent-revisions-of-vhdl-and-verilog-aren-t-usable">
+<h3>Recent revisions of VHDL and Verilog aren’t usable<a class="headerlink" href="#recent-revisions-of-vhdl-and-verilog-aren-t-usable" title="Permalink to this heading">¶</a></h3>
+<p>The EDA industry is really slow to implement VHDL 2008 and SystemVerilog
+synthesis capabilities in their tools. Additionally, when it’s done, it appear
+that only a constraining subset of the language is implemented (not talking
+about simulation features). It result that using any interesting feature of
+those language revision isn’t safe as:</p>
 <ul class="simple">
-<li><p>It will probably make your code incompatible with many EDA tools</p></li>
-<li><p>Others company will likely not accept your IP as their flow isn’t ready for it.</p></li>
+<li><p>It will probably make your code incompatible with many EDA tools.</p></li>
+<li><p>Other companies will likely not accept your IP as their flow isn’t ready for
+it.</p></li>
 </ul>
-<p>Let’s me tell you that I’m tired to wait on expensive and closed source tools.</p>
-</div>
-<div class="section" id="recent-revisions-of-vhdl-and-verilog-aren-t-that-good">
-<h2>Recent revisions of VHDL and Verilog aren’t that good.<a class="headerlink" href="#recent-revisions-of-vhdl-and-verilog-aren-t-that-good" title="Permalink to this heading">¶</a></h2>
-<p>See VHDL 2008 parameterized packages and unconstrained records, sure it allow to write better VHDL sources, but from an OOP perspective they made me feel sick (See next topic for an SpinalHDL example).</p>
-<p>And still those revisions doesn’t change the heart of those HDL issues: They are based on a event driven paradigm which doesn’t make sense to describe digital hardware.</p>
+<p>Anyway, those revisions don’t change the heart of those HDL issues: they are
+based on a event driven paradigm which doesn’t make sense to describe digital
+hardware.</p>
 </div>
 <div class="section" id="vhdl-records-verilog-struct-are-broken-systemverilog-is-good-on-this-if-you-can-use-it">
-<h2>VHDL records, Verilog struct are broken (SystemVerilog is good on this, if you can use it)<a class="headerlink" href="#vhdl-records-verilog-struct-are-broken-systemverilog-is-good-on-this-if-you-can-use-it" title="Permalink to this heading">¶</a></h2>
-<p>You can’t use them to define an interface, because you can’t define their internal signal directions. Even worst, you can’t give them construction parameters! So, define your RGB record/struct once, and hope you never have to use it with bigger/smaller color channels …</p>
-<p>Also a fancy thing with VHDL is the fact that if you want to add an array of something into a component entity, you have to define the type of this array into a package … which can’t be parameterized…</p>
-<p>A SpinalHDL APB3 bus definition:</p>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">//Class which can be instantiated to represent a given APB3 configuration</span>
+<h3>VHDL records, Verilog struct are broken (SystemVerilog is good on this, if you can use it)<a class="headerlink" href="#vhdl-records-verilog-struct-are-broken-systemverilog-is-good-on-this-if-you-can-use-it" title="Permalink to this heading">¶</a></h3>
+<p>You can’t use them to define an interface, because you can’t define their
+internal signal directions. Even worst, you can’t give them construction
+parameters! So, define your RGB record/struct once, and hope you never have to
+use it with bigger/smaller color channels…</p>
+<p>Also a fancy thing with VHDL is the fact that if you want to add an array of
+something into a component entity, you have to define the type of this array
+into a package… Which can’t be parameterized…</p>
+<p>For instance, below is a SpinalHDL APB3 bus definition:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Class which can be instantiated to represent a given APB3 configuration</span>
 <span class="k">case</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Apb3Config</span><span class="p">(</span><span class="w"></span>
 <span class="w">  </span><span class="n">addressWidth</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nc">Int</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="n">dataWidth</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="nc">Int</span><span class="p">,</span><span class="w"></span>
@@ -1266,7 +1291,7 @@
 <span class="w">  </span><span class="n">useSlaveError</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nc">Boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 
-<span class="c1">//Class which can be instantiated to represent a given hardware APB3 bus</span>
+<span class="c1">// Class which can be instantiated to represent a given hardware APB3 bus</span>
 <span class="k">case</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Apb3</span><span class="p">(</span><span class="n">config</span><span class="p">:</span><span class="w"> </span><span class="nc">Apb3Config</span><span class="p">)</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nc">Bundle</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="nc">IMasterSlave</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="nc">PADDR</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="nc">UInt</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">addressWidth</span><span class="w"> </span><span class="n">bits</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="nc">PSEL</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nc">Bits</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">selWidth</span><span class="w"> </span><span class="n">bits</span><span class="p">)</span><span class="w"></span>
@@ -1275,40 +1300,45 @@
 <span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="nc">PWRITE</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nc">Bool</span><span class="p">()</span><span class="w"></span>
 <span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="nc">PWDATA</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nc">Bits</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">dataWidth</span><span class="w"> </span><span class="n">bits</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="nc">PRDATA</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nc">Bits</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">dataWidth</span><span class="w"> </span><span class="n">bits</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="nc">PSLVERROR</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">useSlaveError</span><span class="p">)</span><span class="w"> </span><span class="nc">Bool</span><span class="p">()</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="kc">null</span><span class="w">  </span><span class="c1">//Optional signal</span>
+<span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="nc">PSLVERROR</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">useSlaveError</span><span class="p">)</span><span class="w"> </span><span class="nc">Bool</span><span class="p">()</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="kc">null</span><span class="w">  </span><span class="c1">// Optional signal</span>
 
-<span class="w">  </span><span class="c1">//Can be used to setup a given APB3 bus into a master interface of the host component</span>
+<span class="w">  </span><span class="c1">// Can be used to setup a given APB3 bus into a master interface of the host component</span>
+<span class="w">  </span><span class="c1">// `asSlave` is automatically implemented by symmetry</span>
 <span class="w">  </span><span class="k">override</span><span class="w"> </span><span class="k">def</span><span class="w"> </span><span class="nf">asMaster</span><span class="p">():</span><span class="w"> </span><span class="nc">Unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">out</span><span class="p">(</span><span class="nc">PADDR</span><span class="p">,</span><span class="nc">PSEL</span><span class="p">,</span><span class="nc">PENABLE</span><span class="p">,</span><span class="nc">PWRITE</span><span class="p">,</span><span class="nc">PWDATA</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">in</span><span class="p">(</span><span class="nc">PREADY</span><span class="p">,</span><span class="nc">PRDATA</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">out</span><span class="p">(</span><span class="nc">PADDR</span><span class="p">,</span><span class="w"> </span><span class="nc">PSEL</span><span class="p">,</span><span class="w"> </span><span class="nc">PENABLE</span><span class="p">,</span><span class="w"> </span><span class="nc">PWRITE</span><span class="p">,</span><span class="w"> </span><span class="nc">PWDATA</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">in</span><span class="p">(</span><span class="nc">PREADY</span><span class="p">,</span><span class="w"> </span><span class="nc">PRDATA</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">useSlaveError</span><span class="p">)</span><span class="w"> </span><span class="n">in</span><span class="p">(</span><span class="nc">PSLVERROR</span><span class="p">)</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Then about the VHDL 2008 partial solution and the SystemVerilog interface/modport, lucky you are if your EDA tools / company flow / company policy allow you to use them.</p>
+<p>Then about the VHDL 2008 partial solution and the SystemVerilog
+interface/modport, lucky you are if your EDA tools / company flow / company
+policy allow you to use them.</p>
 </div>
 <div class="section" id="vhdl-and-verilog-are-so-verbose">
-<h2>VHDL and Verilog are so verbose<a class="headerlink" href="#vhdl-and-verilog-are-so-verbose" title="Permalink to this heading">¶</a></h2>
-<p>Really, with VHDL and Verilog, when it start to be about component instanciation interconnection, the copypast good need to be invocated.</p>
-<p>To understand it more deeply, there is an SpinalHDL example which do some peripherals instanciation and add the APB3 decoder required to access them.</p>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">//Instanciate an AXI4 to APB3 bridge</span>
+<h3>VHDL and Verilog are so verbose<a class="headerlink" href="#vhdl-and-verilog-are-so-verbose" title="Permalink to this heading">¶</a></h3>
+<p>Really, with VHDL and Verilog, when it starts to be about component
+instantiation interconnection, the copy-paste god has to be invoked.</p>
+<p>To understand it more deeply, below is a SpinalHDL example performing some
+peripherals instantiation and adding the APB3 decoder required to access them.</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Instanciate an AXI4 to APB3 bridge</span>
 <span class="kd">val</span><span class="w"> </span><span class="n">apbBridge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Axi4ToApb3Bridge</span><span class="p">(</span><span class="w"></span>
 <span class="w">  </span><span class="n">addressWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="n">dataWidth</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="n">idWidth</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 
-<span class="c1">//Instanciate some APB3 peripherals</span>
+<span class="c1">// Instanciate some APB3 peripherals</span>
 <span class="kd">val</span><span class="w"> </span><span class="n">gpioACtrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Apb3Gpio</span><span class="p">(</span><span class="n">gpioWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span><span class="w"></span>
 <span class="kd">val</span><span class="w"> </span><span class="n">gpioBCtrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Apb3Gpio</span><span class="p">(</span><span class="n">gpioWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span><span class="w"></span>
 <span class="kd">val</span><span class="w"> </span><span class="n">timerCtrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">PinsecTimerCtrl</span><span class="p">()</span><span class="w"></span>
 <span class="kd">val</span><span class="w"> </span><span class="n">uartCtrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Apb3UartCtrl</span><span class="p">(</span><span class="n">uartCtrlConfig</span><span class="p">)</span><span class="w"></span>
 <span class="kd">val</span><span class="w"> </span><span class="n">vgaCtrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Axi4VgaCtrl</span><span class="p">(</span><span class="n">vgaCtrlConfig</span><span class="p">)</span><span class="w"></span>
 
-<span class="c1">//Instanciate an APB3 decoder</span>
-<span class="c1">//- Drived by the apbBridge</span>
-<span class="c1">//- Map each peripherals in a memory region</span>
+<span class="c1">// Instanciate an APB3 decoder</span>
+<span class="c1">// - Drived by the apbBridge</span>
+<span class="c1">// - Map each peripheral in a memory region</span>
 <span class="kd">val</span><span class="w"> </span><span class="n">apbDecoder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Apb3Decoder</span><span class="p">(</span><span class="w"></span>
 <span class="w">  </span><span class="n">master</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">apbBridge</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">apb</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="n">slaves</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">List</span><span class="p">(</span><span class="w"></span>
@@ -1321,27 +1351,37 @@
 <span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
-<p>And done, that’s all, you don’t have to bind each signal one by one when you instantiate a module/component because you can access their interfaces in a object oriented manner.</p>
-<p>Also about VHDL/Verilog struct/records, i would just say that they are really dirty tricks, without true parameterization and reusability capabilities, some crutch which try to hide the fact that those languages were poorly designed.</p>
+<p>Done. That’s all. You don’t have to bind each signal one by one when you
+instantiate a module/component because you can access their interfaces in a
+object-oriented manner.</p>
+<p>Also about VHDL/Verilog struct/records, we can say that they are really dirty
+tricks, without true parameterization and reusability capabilities, trying to
+hide the fact that those languages were poorly designed.</p>
 </div>
 <div class="section" id="meta-hardware-description-capabilities">
-<h2>Meta Hardware Description capabilities<a class="headerlink" href="#meta-hardware-description-capabilities" title="Permalink to this heading">¶</a></h2>
-<p>Ok, this is a big chunk. Basically VHDL/Verilog/SystemVerilog will give you some elaboration tools which aren’t directly mapped into hardware as loops / generate statements / macro / function / procedure / task. But that’s all.</p>
-<p>And even them are really limited. As instance why you can’t define process/always/component/module blocks into a task/procedure? It is really a bottleneck for many fancy things. What if you can call a user defined task/procedure on a bus like that: myHandshakeBus.queue(depth=64) ? Wouldn’t it be nice and safe to use?</p>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">//Define the concept of handshake bus</span>
+<h3>Meta Hardware Description capabilities<a class="headerlink" href="#meta-hardware-description-capabilities" title="Permalink to this heading">¶</a></h3>
+<p>Basically VHDL and Verilog provide some elaboration tools which aren’t directly
+mapped into hardware as loops / generate statements / macro / function /
+procedure / task. But that’s all.</p>
+<p>And even then, they are really limited. For instance one can’t define
+process/always/component/module blocks into a task/procedure. It is really a
+bottleneck for many fancy things.</p>
+<p>With SpinalHDL you can call a user-defined task/procedure on a bus like that:
+<code class="docutils literal notranslate"><span class="pre">myHandshakeBus.queue(depth=64)</span></code>. Below is some code including the definition.</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Define the concept of handshake bus</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">Stream</span><span class="p">[</span><span class="nc">T</span><span class="w"> </span><span class="o">&lt;:</span><span class="w"> </span><span class="nc">Data</span><span class="p">](</span><span class="n">dataType</span><span class="p">:</span><span class="w">  </span><span class="nc">T</span><span class="p">)</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nc">Bundle</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">valid</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nc">Bool</span><span class="p">()</span><span class="w"></span>
 <span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">ready</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nc">Bool</span><span class="p">()</span><span class="w"></span>
 <span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cloneOf</span><span class="p">(</span><span class="n">dataType</span><span class="p">)</span><span class="w"></span>
 
-<span class="w">  </span><span class="c1">//Define an operator to connect the left operand (this) to the right operand (that)</span>
+<span class="w">  </span><span class="c1">// Define an operator to connect the left operand (this) to the right operand (that)</span>
 <span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">&gt;&gt;</span><span class="p">(</span><span class="n">that</span><span class="p">:</span><span class="w"> </span><span class="nc">Stream</span><span class="p">[</span><span class="nc">T</span><span class="p">]):</span><span class="w"> </span><span class="nc">Unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="bp">this</span><span class="p">.</span><span class="n">valid</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">that</span><span class="p">.</span><span class="n">valid</span><span class="w"></span>
 <span class="w">    </span><span class="n">that</span><span class="p">.</span><span class="n">ready</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="bp">this</span><span class="p">.</span><span class="n">ready</span><span class="w"></span>
 <span class="w">    </span><span class="bp">this</span><span class="p">.</span><span class="n">payload</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">that</span><span class="p">.</span><span class="n">payload</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">  </span><span class="c1">//Return a Stream connected to this via a FIFO of depth elements</span>
+<span class="w">  </span><span class="c1">// Return a Stream connected to this via a FIFO of depth elements</span>
 <span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">queue</span><span class="p">(</span><span class="n">depth</span><span class="p">:</span><span class="w"> </span><span class="nc">Int</span><span class="p">):</span><span class="w"> </span><span class="nc">Stream</span><span class="p">[</span><span class="nc">T</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="n">fifo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nc">StreamFifo</span><span class="p">(</span><span class="n">dataType</span><span class="p">,</span><span class="w"> </span><span class="n">depth</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="bp">this</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">fifo</span><span class="p">.</span><span class="n">io</span><span class="p">.</span><span class="n">push</span><span class="w"></span>
@@ -1350,21 +1390,28 @@
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Then let’s see further, imagine you want define a state machine, you will have to write raw VHDL/Verilog with some switch statements to do it. You can’t define kind of “StateMachine” abstraction which would give you a fancy syntax to define them, instead you will have to use a third party tool to draw your state machine and then generate your VHDL/Verilog equivalent code. Which is really messy anyway.</p>
-<p>So by meta-hardware description capabilities, i mean the fact that by using raw SpinalHDL syntax, you can define tools which then allow you to define things in abstracts ways, as for state-machine.</p>
-<p>There is an simple example of the usage of a state-machine abstraction defined on the top of SpinalHDL :</p>
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">//Define a new state machine</span>
+<p>Let’s see further, imagine you want to define a state machine. With VHDL/Verilog
+you have to write a lot of raw code with some switch statements to do it. You
+can’t define the notion of “StateMachine”, which would give you a nice syntax to
+define each state. Else you can use a third-party tool to draw your state
+machine and then generate your VHDL/Verilog equivalent code…</p>
+<p>Meta-hardware description capabilities of SpinalHDL enable you to define your
+own tools which then allow you to define things in abstracts ways, as for state
+machines.</p>
+<p>Below is an simple example of the usage of a state machine abstraction defined
+on the top of SpinalHDL:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Define a new state machine</span>
 <span class="kd">val</span><span class="w"> </span><span class="n">fsm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nc">StateMachine</span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="c1">//Define all states</span>
+<span class="w">  </span><span class="c1">// Define all states</span>
 <span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">stateA</span><span class="p">,</span><span class="w"> </span><span class="n">stateB</span><span class="p">,</span><span class="w"> </span><span class="n">stateC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nc">State</span><span class="w"></span>
 
-<span class="w">  </span><span class="c1">//Set the state machine entry point</span>
+<span class="w">  </span><span class="c1">// Set the entry point</span>
 <span class="w">  </span><span class="n">setEntry</span><span class="p">(</span><span class="n">stateA</span><span class="p">)</span><span class="w"></span>
 
-<span class="w">  </span><span class="c1">//Define a register used into the state machine</span>
+<span class="w">  </span><span class="c1">// Define a register used into the state machine</span>
 <span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Reg</span><span class="p">(</span><span class="nc">UInt</span><span class="p">(</span><span class="mi">8</span><span class="w"> </span><span class="n">bits</span><span class="p">))</span><span class="w"> </span><span class="n">init</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
 
-<span class="w">  </span><span class="c1">//Define the state machine behavioural</span>
+<span class="w">  </span><span class="c1">// Define the state machine behaviour for each state</span>
 <span class="w">  </span><span class="n">stateA</span><span class="p">.</span><span class="n">whenIsActive</span><span class="w"> </span><span class="p">(</span><span class="n">goto</span><span class="p">(</span><span class="n">stateB</span><span class="p">))</span><span class="w"></span>
 
 <span class="w">  </span><span class="n">stateB</span><span class="p">.</span><span class="n">onEntry</span><span class="p">(</span><span class="n">counter</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
@@ -1376,12 +1423,19 @@
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 
-<span class="w">  </span><span class="n">stateC</span><span class="p">.</span><span class="n">whenIsActive</span><span class="w"> </span><span class="p">(</span><span class="n">goto</span><span class="p">(</span><span class="n">stateA</span><span class="p">))</span><span class="w"></span>
+<span class="w">  </span><span class="n">stateC</span><span class="p">.</span><span class="n">whenIsActive</span><span class="p">(</span><span class="n">goto</span><span class="p">(</span><span class="n">stateA</span><span class="p">))</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Also imagine you want to generate the instruction decoding of your CPU, it could require some fancy elaboration time algorithms to generate the less logic possible. But in VHDL/Verilog/SystemVerilog, your only option to do this kind of things is to write a script which generates the .vhd .v that you want.</p>
-<p>There is really much to say about meta-hardware-description, but the only true way to understand it and get its realy taste is to experiment it. The goal with it is stopping playing with wires and gates as monkeys, starting taking some distance with that low level stuff, thinking big and reusable.</p>
+<p>Imagine you want to generate the instruction decoding of your CPU. It could
+require some fancy elaboration time algorithms to generate the less logic
+possible. But in VHDL/Verilog, your only option to do this kind of things is to
+write a script which generates the <code class="docutils literal notranslate"><span class="pre">.vhd</span></code> and <code class="docutils literal notranslate"><span class="pre">.v</span></code> that you want.</p>
+<p>There is really much to say about meta-hardware description, but the only true
+way to understand it and get its real taste is to experiment it. The goal with
+it is to stop playing with wires and gates, to start taking some distance with
+that low level stuff, to think reusable.</p>
+</div>
 </div>
 </div>
 
@@ -1396,6 +1450,10 @@
            
           </div>
           <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../Introduction/index.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../../index.html" class="btn btn-neutral float-left" title="Spinal Hardware Description Language" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 
@@ -1431,14 +1489,14 @@
   <div class="rst-other-versions">
     <dl>
       <dt>Tags</dt>
-      <dd><a href="../../../v1.3.1/SpinalHDL/miscelenea/regular_hdl.html">v1.3.1</a></dd>
-      <dd><a href="../../../v1.3.8/SpinalHDL/miscelenea/regular_hdl.html">v1.3.8</a></dd>
-      <dd><a href="../../../v1.5.0/SpinalHDL/miscelenea/regular_hdl.html">v1.5.0</a></dd>
-      <dd><a href="../../../v1.6.0/SpinalHDL/miscelenea/regular_hdl.html">v1.6.0</a></dd>
+      <dd><a href="../../../v1.3.1/index.html">v1.3.1</a></dd>
+      <dd><a href="../../../v1.3.8/index.html">v1.3.8</a></dd>
+      <dd><a href="../../../v1.5.0/index.html">v1.5.0</a></dd>
+      <dd><a href="../../../v1.6.0/index.html">v1.6.0</a></dd>
     </dl>
     <dl>
       <dt>Branches</dt>
-      <dd><a href="regular_hdl.html">master</a></dd>
+      <dd><a href="index.html">master</a></dd>
     </dl>
     <dl>
       <dt>Downloads</dt>
