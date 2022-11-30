@@ -468,6 +468,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Semantic/when_switch.html#when">When</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Semantic/when_switch.html#switch">Switch</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../Semantic/when_switch.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Semantic/when_switch.html#additional-options">Additional options</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../Semantic/when_switch.html#local-declaration">Local declaration</a></li>
@@ -692,6 +693,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Libraries/fsm.html#statemachine">StateMachine</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../Libraries/fsm.html#entry-point">Entry point</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../Libraries/fsm.html#transitions">Transitions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Libraries/fsm.html#state-encoding">State encoding</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../Libraries/fsm.html#states">States</a><ul>
@@ -1254,7 +1256,7 @@ If it is giving a false positive, you can manually disable loop checking on one 
 </pre></div>
 </div>
 <p>It should also be said that assignments such as <code class="docutils literal notranslate"><span class="pre">(a(1)</span> <span class="pre">:=</span> <span class="pre">a(0))</span></code> can make some tools like <a class="reference external" href="https://www.veripool.org/wiki/verilator">Verilator</a> unhappy.
-It may be better to use a <code class="docutils literal notranslate"><span class="pre">Vec(Bool,</span> <span class="pre">8)</span></code> in this case.</p>
+It may be better to use a <code class="docutils literal notranslate"><span class="pre">Vec(Bool(),</span> <span class="pre">8)</span></code> in this case.</p>
 </div>
 </div>
 
