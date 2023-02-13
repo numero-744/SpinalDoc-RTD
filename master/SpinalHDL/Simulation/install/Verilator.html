@@ -739,7 +739,9 @@
 <li class="toctree-l3"><a class="reference internal" href="../../Libraries/regIf.html#automatic-allocation">Automatic allocation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Libraries/regIf.html#access-types">28 Access Types</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Libraries/regIf.html#automatic-documentation-generation">Automatic documentation generation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Libraries/regIf.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Libraries/regIf.html#special-access-usage">Special Access Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Libraries/regIf.html#byte-mask">Byte Mask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Libraries/regIf.html#typical-example">Typical Example</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Libraries/regIf.html#interrupt-factory">Interrupt Factory</a></li>
 </ul>
 </li>
@@ -747,7 +749,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../../Libraries/regIf.html#ip-level-interrupt-factory">IP level interrupt Factory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Libraries/regIf.html#sys-level-interrupt-merge">SYS level interrupt merge</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Libraries/regIf.html#spinal-factory">Spinal Factory</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Libraries/regIf.html#id1">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Libraries/regIf.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Libraries/regIf.html#defaultreadvalue">DefaultReadValue</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../Libraries/regIf.html#developers-area">Developers Area</a></li>
 </ul>
 </li>
@@ -1224,7 +1227,7 @@ unsetenv VERILATOR_ROOT  <span class="c1"># For csh; ignore error if on bash</sp
 <span class="nb">unset</span> VERILATOR_ROOT  <span class="c1"># For bash</span>
 <span class="nb">cd</span> verilator
 git pull        <span class="c1"># Make sure we&#39;re up-to-date</span>
-git checkout v4.040
+git checkout v4.218
 autoconf        <span class="c1"># Create ./configure script</span>
 ./configure
 make -j<span class="k">$(</span>nproc<span class="k">)</span>
